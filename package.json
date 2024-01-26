@@ -20,7 +20,6 @@
     "react": "^18",
     "react-dom": "^18",
     "react-parallax": "^3.5.1",
-    "sharp": "^0.33.2",
     "three": "^0.158.0"
   },
   "devDependencies": {
