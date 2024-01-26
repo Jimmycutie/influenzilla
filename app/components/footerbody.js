@@ -9,7 +9,7 @@ const Footerbody = () => {
   return (
     <div className='h-screen w-full'>
       <Parallax 
-        className='relative flex h-3/4'
+        className='relative flex h-3/4 min-[320px]:max-sm:h-1/2'
         bgImage={'../../static/background/footerbg.png'}
         strength={600} 
       >

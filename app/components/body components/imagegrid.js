@@ -26,16 +26,16 @@ const Imagegrid = () => {
         },
     ]
     return (
-        <div className='flex flex-row h-full flex-wrap min-[320px]:max-lg:justify-center'>
+        <div className='flex flex-row min-[320px]:max-lg:flex-col min-[320px]:max-md:flex-nowrap h-full min-[320px]:max-lg:w-full flex-wrap min-[320px]:max-lg:justify-center'>
             {
                 clips.map(items => (
                     <Parallax 
                         key={items.id}
-                        className='relative flex flex-row w-1/2 h-6/6'
+                        className='relative flex flex-row w-1/2 min-[320px]:max-lg:w-full h-full'
                         bgImage={items.url}
                         strength={300}
                     >
-                        <div className='flex flex-col h-full w-4/6 justify-end p-20 font-unbounded gap-12'>
+                        <div className='flex flex-col h-full w-4/6 min-[320px]:max-lg:w-full justify-end p-20 min-[320px]:max-sm:p-5 font-unbounded gap-12 min-[320px]:max-sm:gap-8'>
                             <h1 className='text-5xl font-light'>{items.id}</h1>
                             <p className='font-extralight'>{items.text}</p> 
                         </div>

@@ -6,7 +6,7 @@ const unbounded = Unbounded({
   subsets: ['latin'],
   weight:['200', '300', '400', '600'],
   variable: '--font-unbounded',
-  // display: "swap"
+  display: "swap"
 })
 const inter = Inter_Tight({ 
   subsets: ['latin'],
