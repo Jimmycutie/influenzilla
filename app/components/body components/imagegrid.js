@@ -31,7 +31,7 @@ const Imagegrid = () => {
                 clips.map(items => (
                     <Parallax 
                         key={items.id}
-                        className='relative flex flex-row w-1/2 min-[320px]:max-lg:w-full h-full'
+                        className='relative flex flex-row w-1/2 min-[320px]:max-lg:w-full'
                         bgImage={items.url}
                         strength={300}
                     >
