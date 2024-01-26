@@ -15,7 +15,7 @@ const Landing = () => (
     <Nav />
     <Hero />
 
-    <footer className='flex flex-row min-[320px]:max-sm:flex-wrap min-[320px]:max-sm:text-sm w-screen h-1/5 justify-between items-center bg-black/70 font-unbounded px-[6%] min-[320px]:max-sm:p-8'>
+    <footer className='flex flex-row min-[320px]:max-sm:flex-wrap min-[320px]:max-sm:text-sm w-screen h-1/5 min-[320px]:max-sm: justify-between items-center bg-black/70 font-unbounded px-[6%] min-[320px]:max-sm:p-5'>
       {
         footer.map(item => (
           <h4 
