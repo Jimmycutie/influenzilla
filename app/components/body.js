@@ -6,7 +6,7 @@ import Content from './body components/content'
 
 const Body = () => {
   return (
-    <div className='flex flex-col gap-y-32 w-full px-[6%] py-[5%]'>
+    <div className='flex flex-col overflow-clip gap-y-32 w-full px-[6%] py-[5%]'>
         <Intro />
         <Imagegrid />
         <Content />
