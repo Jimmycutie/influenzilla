@@ -18,7 +18,7 @@ const Nav = () => {
           <p className='text-xs min-[320px]:max-lg:hidden w-2/6'>bespoke design and marketing services</p>
         </div>
         <div className='hidden min-[320px]:max-sm:flex justify-center items-center font-extralight text-sm'>
-          <h1>MENU</h1>
+          <h1 className='relative underlined cursor-pointer gradient-4color3 after:absolute after:content-[""] after:h-[2px] after:bg-white after:-bottom-1.5 after:left-0 after:transition-all after:duration-500 after:opacity-0 after:hover:opacity-100 after:hover:w-full after:w-0 after:-translate-x-1/2 after:hover:translate-x-0'>MENU</h1>
         </div>
         <div className='col-span-2 grid grid-rows-2 min-[320px]:max-sm:hidden'>
           <div 

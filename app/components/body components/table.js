@@ -7,7 +7,7 @@ const Table = () => {
     const {scrollEf, isIntersecting} = useIntersectionObserver()
   return (
     <div className='overflow-clip'>
-        <div ref={scrollEf} className={`transition-all duration-500 ${isIntersecting ? `translate-x-0 opacity-100` : `translate-x-[300px] opacity-0`}`}>
+        <div>
             <div className='w-full overflow-scroll'>
                 <table className='w-full min-[320px]:max-sm:hidden'>
                     <tbody>
