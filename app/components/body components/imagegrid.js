@@ -2,6 +2,8 @@
 import React from 'react'
 import { Parallax } from 'react-parallax'
 import img from '../../../static/grid/22.png'
+import { useIntersectionObserver } from '@/app/hooks/intersection'
+
 const Imagegrid = () => {
     const clips = [
         {
@@ -25,8 +27,15 @@ const Imagegrid = () => {
             url: '../../../static/grid/23.png'
         },
     ]
+    const {scrollEf, isIntersecting} = useIntersectionObserver()
     return (
-        <div className='flex flex-row min-[320px]:max-lg:flex-col min-[320px]:max-md:flex-nowrap h-full min-[320px]:max-lg:w-full flex-wrap min-[320px]:max-lg:justify-center'>
+        <div ref={scrollEf} className={`flex flex-row min-[320px]:max-lg:flex-col min-[320px]:max-md:flex-nowrap h-full min-[320px]:max-lg:w-full flex-wrap min-[320px]:max-lg:justify-center
+                [&>*:nth-child(1)]:transition-all [&>*:nth-child(1)]:duration-500 ${isIntersecting ? `[&>*:nth-child(1)]:translate-x-0 [&>*:nth-child(1)]:opacity-100` : `[&>*:nth-child(1)]:-translate-x-44 [&>*:nth-child(1)]:opacity-0`}
+                [&>*:nth-child(2)]:transition-all [&>*:nth-child(2)]:duration-500 [&>*:nth-child(2)]:delay-300 ${isIntersecting ? `[&>*:nth-child(2)]:translate-x-0 [&>*:nth-child(2)]:opacity-100` : `[&>*:nth-child(2)]:-translate-x-56 [&>*:nth-child(2)]:opacity-0`}
+                [&>*:nth-child(3)]:transition-all [&>*:nth-child(3)]:duration-500 [&>*:nth-child(3)]:delay-500 ${isIntersecting ? `[&>*:nth-child(3)]:translate-x-0 [&>*:nth-child(3)]:opacity-100` : `[&>*:nth-child(3)]:-translate-x-56 [&>*:nth-child(3)]:opacity-0`}
+                [&>*:nth-child(4)]:transition-all [&>*:nth-child(4)]:duration-500 [&>*:nth-child(4)]:delay-700 ${isIntersecting ? `[&>*:nth-child(4)]:translate-x-0 [&>*:nth-child(4)]:opacity-100` : `[&>*:nth-child(4)]:-translate-x-56 [&>*:nth-child(4)]:opacity-0`}
+            `}
+        >
             {
                 clips.map(items => (
                     <Parallax 

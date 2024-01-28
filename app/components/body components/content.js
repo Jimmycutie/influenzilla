@@ -1,13 +1,14 @@
 import React from 'react'
 import Star from '@/static/Starbody.png'
 import Image from 'next/image'
-import Blob from './blob'
-import { Canvas } from '@react-three/fiber'
+import { useIntersectionObserver } from '@/app/hooks/intersection'
+import Table from './table'
 
 const Content = () => {
+  const {scrollEf, isIntersecting} = useIntersectionObserver()
   return (
-    <div className='flex flex-col gap-y-24'>
-      <h1 className='font-unbounded text-6xl min-[320px]:max-sm:text-4xl sm:max-md:leading-loose leading-relaxed font-light bg-gradient-to-r from-[#C6F1F7] via-[#F983E9] via-25% to-[#B877FF] inline-block text-transparent bg-clip-text'>
+    <div ref={scrollEf} className='flex flex-col gap-y-24'>
+      <h1 className={`font-unbounded text-6xl min-[320px]:max-sm:text-4xl sm:max-md:leading-loose leading-relaxed font-light bg-gradient-to-r from-[#C6F1F7] via-[#F983E9] via-25% to-[#B877FF] inline-block text-transparent bg-clip-text transition-all duration-500 ${isIntersecting ? `translate-x-0 opacity-100` : `-translate-x-[300px] opacity-0`}`}>
         
         <p 
             data-text='achieve'
@@ -20,148 +21,21 @@ const Content = () => {
       </h1>
       <div className='grid grid-cols-6 min-[320px]:max-lg:flex min-[320px]:max-lg:flex-col min-[320px]:max-sm:gap-5'>
         <div className='col-span-2 flex flex-col min-[320px]:max-lg:flex-row justify-between'>
-          <h5 className='text-sm gradient-4colors'>London 2006</h5>
-          <Image src={Star} width={40} className='mb-[30%] min-[320px]:max-lg:mb-0'/>
+          <h5 className={`text-sm gradient-4colors transition-all duration-500 delay-100 ${isIntersecting ? `translate-x-0 opacity-100` : `-translate-x-[100px] opacity-0`}`}>London 2006</h5>
+          <Image src={Star} width={40} className={`mb-[30%] min-[320px]:max-lg:mb-0 transition-all duration-500 delay-500 ${isIntersecting ? `translate-x-0 opacity-100` : `-translate-x-[100px] opacity-0`}`}/>
         </div>
 
         <div className='col-span-4 flex flex-col gap-y-10 font-extralight w-full'>
-          <div className='flex flex-row gap-x-56 min-[320px]:max-lg:gap-x-10 min-[320px]:max-lg:justify-evenly'>
+          <div className={`flex flex-row gap-x-56 min-[320px]:max-lg:gap-x-10 min-[320px]:max-lg:justify-evenly
+              [&>*:nth-child(1)]:transition-all [&>*:nth-child(1)]:duration-1000 ${isIntersecting ? `[&>*:nth-child(1)]:translate-y-0 [&>*:nth-child(1)]:opacity-100` : `[&>*:nth-child(1)]:-translate-y-40 [&>*:nth-child(1)]:opacity-0`}
+              [&>*:nth-child(2)]:transition-all [&>*:nth-child(2)]:duration-1000 [&>*:nth-child(2)]:delay-100 ${isIntersecting ? `[&>*:nth-child(2)]:translate-y-0 [&>*:nth-child(2)]:opacity-100` : `[&>*:nth-child(2)]:-translate-y-40 [&>*:nth-child(2)]:opacity-0`}
+            `}
+          >
             <p className='min-[320px]:max-lg:w-1/2 min-[320px]:max-sm:w-full'>Influenzilla is a leading design and marketing agency that offers creative solutions to businesses of all sizes. Our team of experts specializes in creating unique and effective designs that help our clients stand out in a crowded market.<br/><br/> Our mission is to help our clients achieve their business objectives through innovative and effective design solutions. We believe that great design is more than just aesthetics. It's about creating a seamless user experience that engages and delights your audience.</p>
             <p className='min-[320px]:max-lg:w-1/2 min-[320px]:max-sm:hidden'>We take pride in our ability to understand the unique needs and goals of each of our clients, and to develop customized solutions that exceed their expectations. Our team of talented designers and marketers work closely with our clients to create a cohesive brand identity, effective marketing strategies, and user-friendly websites and applications.<br/><br/> We offer a wide range of services, including branding, web design, social media marketing, graphic design, and more. Our goal is to help our clients achieve success by providing them with the tools and resources they need to grow their business.</p>
           </div>
-          <div className=''>
-            <div className='w-full overflow-scroll'>
-              <table className='w-full min-[320px]:max-sm:hidden'>
-                <tbody>
-                  <tr>
-                    <td>
-                      <Canvas 
-                        camera={{position:[0.0, 0.0, 5.0]}}
-                      >
-                        <Blob />
-                      </Canvas>
-                    </td>
-                    <td>
-                      <div className='flex flex-row'>
-                        <Canvas camera={{position:[0.0, 0.0, 5.0]}}>
-                          <Blob />
-                        </Canvas>
-                        <Canvas 
-                          camera={{position:[0.0, 0.0, 5.0]}}
-                          className='-ml-48'
-                        >
-                          <Blob />
-                        </Canvas>
-                      </div>
-                    </td>
-                    <td>
-                      <div className='flex flex-row'>
-                        <Canvas camera={{position:[0.0, 0.0, 5.0]}}>
-                          <Blob />
-                        </Canvas>
-                        <Canvas 
-                          camera={{position:[0.0, 0.0, 5.0]}}
-                          className='-ml-40'
-                        >
-                          <Blob />
-                        </Canvas>
-                        <Canvas 
-                          camera={{position:[0.0, 0.0, 5.0]}}
-                          className='-ml-40'
-                        >
-                          <Blob />
-                        </Canvas>
-                      </div>
-                      
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className='flex flex-col gap-y-6'>
-                        <h1 className='font-unbounded font-light text-3xl gradient-4colors'>Branding</h1>
-                        <p className='text-sm w-48'>Our team of experts specializes in creating unique and effective designs</p>
-                      </div>
-                    </td>
-                    <td>
-                      <div className='flex flex-col gap-y-6'>
-                        <h1 className='font-unbounded font-light text-3xl gradient-4colors'>Design</h1>
-                        <p className='text-sm w-48'>Innovative and effective design solutions for business of our clients</p>
-                      </div>
-                    </td>
-                    <td>
-                      <div className='flex flex-col gap-y-6'>
-                        <h1 className='font-unbounded font-light text-3xl gradient-4colors'>Marketing</h1>
-                        <p className='text-sm w-48'>Our team of experienced designers and marketing professionals work closely</p>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div className='w-full hidden min-[320px]:max-sm:flex flex-col justify-start border-solid border-2'>
-                <div className='border-solid border-b-2 py-5'>
-                  <Canvas 
-                    camera={{position:[0.0, 0.0, 5.0]}}
-                  >
-                    <Blob />
-                  </Canvas>
-                </div>
-                <div className='border-solid border-b-2 p-10'>
-                  <div className='flex flex-col gap-y-6'>
-                    <h1 className='font-unbounded font-light text-3xl gradient-4colors'>Branding</h1>
-                    <p className='text-sm w-48'>Our team of experts specializes in creating unique and effective designs</p>
-                  </div>
-                </div>
-                <div className='border-solid border-b-2 py-5'>
-                  <div className='flex flex-row'>
-                    <Canvas camera={{position:[0.0, 0.0, 5.0]}}>
-                      <Blob />
-                    </Canvas>
-                    <Canvas 
-                      camera={{position:[0.0, 0.0, 5.0]}}
-                      className='-ml-48'
-                    >
-                      <Blob />
-                    </Canvas>
-                  </div>
-                </div>
-                <div className='border-solid border-b-2 p-10'>
-                  <div className='flex flex-col gap-y-6'>
-                    <h1 className='font-unbounded font-light text-3xl gradient-4colors'>Design</h1>
-                    <p className='text-sm w-48'>Innovative and effective design solutions for business of our clients</p>
-                  </div>
-                </div>
-                <div className='border-solid border-b-2 py-5'>
-                  <div className='flex flex-row'>
-                    <Canvas camera={{position:[0.0, 0.0, 5.0]}}>
-                      <Blob />
-                    </Canvas>
-                    <Canvas 
-                      camera={{position:[0.0, 0.0, 5.0]}}
-                      className='-ml-40'
-                    >
-                      <Blob />
-                    </Canvas>
-                    <Canvas 
-                      camera={{position:[0.0, 0.0, 5.0]}}
-                      className='-ml-40'
-                    >
-                      <Blob />
-                    </Canvas>
-                  </div>
-                  
-                </div>
-                
-                
-                <div className='border-solid border-b-2 p-10'>
-                  <div className='flex flex-col gap-y-6'>
-                    <h1 className='font-unbounded font-light text-3xl gradient-4colors'>Marketing</h1>
-                    <p className='text-sm w-48'>Our team of experienced designers and marketing professionals work closely</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className='w-3/6 min-[320px]:max-sm:w-full'>
+          <Table/>
+          <div className={`w-3/6 min-[320px]:max-sm:w-full transition-all duration-500 delay-300 ${isIntersecting ? `translate-x-0 opacity-100` : `translate-x-[300px] opacity-0`}`}>
             <p>We specialize in creating unique and innovative designs that not only capture the essence of your business but also help you achieve your goals. We believe that great design is about creating a seamless user experience that engages and delights your audience, and we work hard to ensure that every design we create meets this high standard.</p>
           </div>
         </div>
